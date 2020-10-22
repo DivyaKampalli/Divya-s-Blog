@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0095)https://s372.meetrics.net/bb-mxad/serve?mode=iframe&userID=578a21c0-64e9-4c5f-ade4-71ea640d639c -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>etag setting page</title>
+</head><body>
+<script type="text/javascript">
+  var xmlhttp = undefined;
+  if (window.XMLHttpRequest) {
+    xmlhttp = new XMLHttpRequest();
+  } else {
+    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+  }
+  var mtrcs_p="http";
+  if(window.location.href.indexOf("https") == 0){
+    mtrcs_p="https";
+  }
+  if (xmlhttp) {
+    xmlhttp.open("GET", mtrcs_p+"://s372.meetrics.net/bb-mxad/gettag", true);
+    xmlhttp.setRequestHeader("X-Meetrics-ETag-Mode", "set="+"578a21c0-64e9-4c5f-ade4-71ea640d639c");
+    xmlhttp.send();
+  }
+</script>
+
+</body></html>

@@ -1,0 +1,186 @@
+
+
+body { background-color:;}
+
+#section1-info .info-comp h2, #section1-info .info-comp > div, #section1-info .info-comp ul li, #additional-notes h3, #additional-notes p {color:;}
+
+#section2 { background-color:; }
+
+
+.footer a, .footer a:visited, .footer a:active { color:; }
+.footer a:hover { color:; }
+button.form-button { background-color:#319dd4; border-bottom-color:; color:; }
+button.form-button:hover, button.form-button:focus { background-color:#ff8717; }
+.left-header { color: }
+.right-header { color: }
+.content-title { color: !important; }
+
+
+@media screen and (max-width: 767px) { /* According to bootstrap grid layout. */
+    #twoSectionsTemplate #section2{background-color:rgba(0,0,0,0.6)} /*TODO*/
+}
+
+
+/* custom css */
+body{}
+.longregistersteps .nextstep {
+  color: #02339D
+}
+
+#phoneNumberError span{ 
+  float: none;
+}
+
+.notifSurveyBtn a, .notifSurveyBtn span{
+    writing-mode:initial;
+    transform: rotate(90deg);
+    -ms-transform:rotate(90deg);
+}
+
+#mainHeader, #mainHeader .submenu.customizable, #mainHeader .userdropmenu {
+  background-color: #ffffff;
+}
+
+#footer { 
+height:142px; // height should be specified after checking the content actual height in the UI. 
+} 
+
+#footer, #twoSectionsTemplate .footer {
+  width: 100%;
+}
+
+#footer a, #twoSectionsTemplate .footer a {
+  font-family: "MuseoSans-100";
+  font-size: 1.1rem;
+}
+
+#footer ul li a { 
+   text-decoration: none; //Remove underline in footer
+}
+
+.temp-hide {
+   display:none !important; // temporarily hide banner
+}
+
+/* Table Header Color is not applying  */
+#wizardPanelContainer.wizard_top.customizable {
+  background-color: #b8b7b6;
+}
+.categoryIcon.customizable {
+  color: #b8b7b6;
+}
+
+a.MenuHeader .link {
+    display: block;
+    border-bottom: 4px solid #fff;
+    min-width: 95px;
+    height: 45px;
+    padding: 0px 15px;
+    float: inherit;
+}
+
+#title h1.left-header span {
+     white-space: normal; 
+}
+
+.progress-message {
+  font-size: 5rem;
+  color: #ebf1f5;
+}
+
+/*Privacy policy  - "Read more" option */
+.privacycontainer p {font-size:  inherit !important; }
+.read-more-state {
+		  display: none;
+		}
+
+		.read-more-target {
+		  opacity: 0;
+		  max-height: 0;
+		  font-size: 0;
+		  transition: .25s ease;
+		}
+
+		.read-more-state:checked ~ .read-more-wrap .read-more-target {
+		  opacity: 1;
+		  font-size: inherit;
+		  max-height: 999em;
+		}
+
+
+		.read-more-trigger {
+		  	background-color: #319dd3;
+		  	color: #ffffff;
+		    text-align: center;
+		    padding: 8px 25px;
+		    display: inline-block;
+		    margin-top: 15px;
+		    font-size: 18px;
+		}
+
+		.read-more-trigger:hover {
+		  background-color: #ff8717;
+		}
+
+
+/* Mobile */
+@media (max-width: 767px) {
+  #title h1.left-header span {
+     width: auto;
+} 
+.no-mobile {
+        display:none !important; // don't show content on mobile
+    }
+
+}
+
+@media screen and (max-width: 767px) { 
+#additional-notes { 
+padding-bottom: 242px; // should have the same value as the height of the #Footer 
+} 
+} 
+
+@media screen and (max-width: 767px) { 
+#additional-notes { 
+padding-bottom: 242px; // should have the same value as the height of the #Footer 
+} 
+} 
+
+@media (min-width: 992px) {
+    .mobile-only {
+        display:none !important; // don't display banner on desktop
+    }
+}
+
+/* Pool Topic Battle header  */
+.select_w .wizardMode {
+    float: left;
+}
+
+/* Policy privacy logo  */
+.truste_logo {
+    display: none;
+}
+
+/* Facebook sign up text  */
+#signup-text {
+  white-space: nowrap;
+}
+
+/* Facebook icon on registration  */
+.customizable.fb-image {
+    border-right: 0px solid rgb(255, 255, 255);
+}
+.fb-connect {
+visibility: hidden;
+}
+.registr_facebook   {
+visibility: hidden;
+}
+#loginLineDiv .fbConnectImg  {
+visibility: hidden;
+}
+
+#main-carousel-content .left-side.app-banner .app-logo {
+    display: none;
+}

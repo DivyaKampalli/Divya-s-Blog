@@ -1,0 +1,125 @@
+(function() {
+
+  var mtrcs_p="http",
+      pjid="144330",
+      collector = "s372.meetrics.net",
+      script_injected = false;
+  if (window.location.href.indexOf("https") == 0) {
+    mtrcs_p="https";
+  }
+
+  window.mtrcs_callJavascript = function(userid,matchid) {
+    var mtrcs_img2 = new Image(1,1);
+    mtrcs_img2.src = mtrcs_p+'://'+collector+'/bb-mxad/set?userID='+(userid==null?"":userid)+'&mode=10&matchID='+(matchid==null?"":matchid);
+    inject_script();
+  }
+
+  var inject_script = function() {
+    if (!script_injected) {
+      var script = document.createElement("script");
+      script.src = mtrcs_p+"://"+collector+'/bb-mx/prime/mtrcs_'+pjid+'.js?pjid='+pjid;
+      document.body.appendChild(script);
+      script_injected = true;
+    }
+  }
+
+    var userid="578a21c0-64e9-4c5f-ade4-71ea640d639c";
+
+  //When called with majorVersion returns true if that version or greater is available
+  var detectFlashVer = function (majorVersion) {
+    var currentVersion = -1;
+  //is false, if it is no Internet Explorer; search for the current Flash version
+    if (window.ActiveXObject) {
+
+      try {
+      var xobj = new ActiveXObject('ShockwaveFlash.ShockwaveFlash');
+      } catch (e) {
+      currentVersion = -1;
+      }
+
+      if (xobj) {
+
+          currentVersion = xobj.GetVariable('$version').substring(4);
+          currentVersion = currentVersion.split(',');
+          currentVersion = parseFloat(currentVersion[0]);
+        }
+    } else {//tries to get the current browser
+
+      var plugins = navigator.plugins;
+      for (var j = 0; j < plugins.length; j++) {
+
+        if(plugins[j].name.toLowerCase().indexOf("shockwave flash")>-1){
+
+          if (typeof plugins[j].version == "undefined") {
+
+            var mainVersion  = plugins[j].description.slice(0,plugins[j].description.indexOf('.')),
+            reGex = /^.*?(\d{1,})$/;
+            currentVersion = mainVersion.match(reGex);
+            if (currentVersion) {
+
+              currentVersion = currentVersion[1];
+            } else {
+
+              currentVersion=-1;
+            }
+          } else {
+
+            currentVersion = plugins[j].version.slice(0,plugins[j].version.indexOf('.'));
+          }
+          break;
+        }
+      }
+    }
+    return currentVersion >= majorVersion;
+  }
+
+  var appendElement = function (element) {
+
+    setTimeout( function () {
+      if (!document.body) {
+
+        appendElement(element);
+      } else {
+
+        document.body.appendChild(element);
+      }
+    }, 200);
+  };
+
+  function mtrcs_addCookie() {
+    var mtrcs_p="http";
+    if(window.location.href.indexOf("https") == 0){
+      mtrcs_p="https";
+    }
+
+    var mtrcs_img1 = new Image(1,1);
+    mtrcs_img1.src = mtrcs_p+'://'+collector+'/bb-mxad/set?userID='+(userid==null?"":userid)+'&mode=11';
+
+    if (detectFlashVer(6)) {
+      var path = mtrcs_p+'://'+collector+'/bb-serve/panelcheck.swf';
+
+      var innerhtml = '<object data="'+path+'" type="application/x-shockwave-flash" id="f" width="1" height="1" <!--[if IE]> classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000"><param name="movie" value="'+path+'" /<![endif] -->> <param name="height" value="1" /><param name="width" value="1" /><param name="quality" value="high" /><param name="menu" value="false" /><param name="wmode" value="" + wmode + "" /><param name="allowscriptaccess" value="always" /><param name="flashvars" value="userid='+userid+'" /></object>'
+        
+      var el = top.document.createElement("span");
+      el.innerHTML = innerhtml;
+      appendElement(el);
+    }
+    var iframe = document.createElement("iframe");
+    iframe.src = mtrcs_p+"://"+collector+"/bb-mxad/serve?mode=iframe&userID="+(userid==null?"":userid);
+    iframe.frameBorder = 0;
+    iframe.scrolling = "no";
+    iframe.width = 0;
+    iframe.height = 0;
+    appendElement(iframe);
+  }
+
+  if (navigator.appVersion && (navigator.appVersion.indexOf("MSIE 8.0")>=0 || navigator.appVersion.indexOf("MSIE 7.0")>=0 || navigator.appVersion.indexOf("MSIE 6.0")>=0)) {
+    var mtrcs_oldHandlers = document.body.onload;
+    document.body.onload = function() {mtrcs_addCookie(); if (mtrcs_oldHandlers) {mtrcs_oldHandlers();}}
+  }
+  else
+  {
+    mtrcs_addCookie();
+  }
+
+})();
